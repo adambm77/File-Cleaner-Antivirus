@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+
 """
 Nettoyeur de fichiers vides + Antivirus par signature (VirusTotal)
 Application de bureau Tkinter
@@ -38,9 +37,7 @@ except ImportError:
 VT_API_URL = "https://www.virustotal.com/api/v3/files/{}"
 
 
-# ----------------------------------------------------------------------
-# Fonctions utilitaires
-# ----------------------------------------------------------------------
+
 
 def calculer_sha256(chemin_fichier, taille_bloc=65536):
     """Calcule le hash SHA-256 d'un fichier."""
@@ -111,9 +108,7 @@ def interroger_virustotal(hash_sha256, api_key):
         return {"erreur": f"Erreur VirusTotal (code {reponse.status_code})."}
 
 
-# ----------------------------------------------------------------------
-# Application Tkinter
-# ----------------------------------------------------------------------
+
 
 class App(tk.Tk):
     def __init__(self):
@@ -129,7 +124,7 @@ class App(tk.Tk):
 
         self._construire_interface()
 
-    # ------------------------------------------------------------------
+
     def _construire_interface(self):
         notebook = ttk.Notebook(self)
         notebook.pack(fill="both", expand=True, padx=10, pady=10)
@@ -143,9 +138,7 @@ class App(tk.Tk):
         self._construire_onglet_nettoyage()
         self._construire_onglet_antivirus()
 
-    # ------------------------------------------------------------------
-    # Onglet 1 : Nettoyeur de fichiers vides
-    # ------------------------------------------------------------------
+
     def _construire_onglet_nettoyage(self):
         frame = self.onglet_nettoyage
 
@@ -321,9 +314,7 @@ class App(tk.Tk):
         messagebox.showinfo("Terminé", message)
         self.label_statut_nettoyage.config(text=message.splitlines()[0])
 
-    # ------------------------------------------------------------------
-    # Onglet 2 : Antivirus VirusTotal
-    # ------------------------------------------------------------------
+  
     def _construire_onglet_antivirus(self):
         frame = self.onglet_antivirus
 
